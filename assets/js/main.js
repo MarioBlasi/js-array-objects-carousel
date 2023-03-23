@@ -52,39 +52,22 @@ const images = [
 const rowEl = document.querySelector(".row");
 console.log(images);
 
-for (let i = 0; i < images.length; i++) {
-  const thisimages = images[i];
-  console.log(thisimages);
-  const markup = `
-    <div class="col">
-          <div class="card">
-              <img src="${thisimages.image}" alt="" class="card-img-top">
-              <div class="card-body">
-                  <h3>${thisimages.title}</h3>
-                  <p>${thisimages.text}</p>  
-              </div>
+images
+  .map((thisimages) => {
+    return `
+      <div class="col">
+        <div class="card">
+          <img src="${thisimages.image}" alt="" class="card-img-top">
+          <div class="card-body">
+            <h3>${thisimages.title}</h3>
+            <p>${thisimages.text}</p>
           </div>
-     </div>`;
-  rowEl.innerHTML += markup;
-}
-
-// images
-//   .filter((thisimages) => thisimages.ruolo === "Attaccante")
-//   .map((thisimages) => {
-//     return `
-//     <div class="col">
-//       <div class="card">
-//         <img src="${thisimages.image}" alt="" class="card-img-top">
-//         <div class="card-body">
-//           <h3>${thisimages.title}</h3>
-//           <p>${thisimages.text}</p>
-//         </div>
-//       </div>
-//     </div>`;
-//   });
-// forEach((markup) => {
-//   rowEl.innerHTML += markup;
-// });
+        </div>
+      </div>`;
+  })
+  .forEach((markup) => {
+    rowEl.innerHTML += markup;
+  });
 
 // // Crea le miniature usando il metodo map()
 // const thumbnailImages = images.map((imgSrc, index) => {
