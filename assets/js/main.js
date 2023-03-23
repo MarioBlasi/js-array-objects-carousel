@@ -6,12 +6,6 @@ descrizione
 
 Creare un carosello come nella foto allegata.
 
-Milestone 1:
-Ora rimuoviamo i contenuti statici e usiamo l’array di oggetti 
-letterali per popolare dinamicamente il carosello.
-Al click dell'utente sulle frecce verso sinistra o destra,
-l'immagine attiva diventerà visibile e dovremo aggiungervi titolo e testo.
-
 Milestone 2:
 Aggiungere il ciclo infinito del carosello. Ovvero se la miniatura attiva è 
 la prima e l'utente clicca la freccia verso destra, la miniatura che deve 
@@ -54,30 +48,3 @@ const images = [
     text: "Marvel's Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.",
   },
 ];
-
-const rowEl = document.querySelector(".row");
-console.log(images);
-/*Milestone 0:
-Come nel primo carosello realizzato, focalizziamoci prima sulla creazione del 
-markup statico: costruiamo il container e inseriamo l'immagine grande
-in modo da poter stilare lo slider.*/
-
-//selezioniamo gli elementi HTML dall'albero del documento usando document.querySelector()
-// selezionati gli elementi HTML corrispondenti alla classe .slider, all'elemento HTML con classe .slide-img,
-//ai bottoni di navigazione con classe .prev-btn e .next-btn e alle miniature con classe .thumbnails.
-
-const imageMarkupArray = images.map(
-  (thisimages) => `
-    <div class="col">
-        <div class="card">
-            <img src="${thisimages.image}" alt="" class="card-img-top">
-            <div class="card-body">
-                <h3>${thisimages.title}</h3>
-                <p>${thisimages.text}</p>  
-            </div>
-        </div>
-    </div>
-`
-);
-
-rowEl.innerHTML = imageMarkupArray.join("");
