@@ -48,3 +48,47 @@ const images = [
     text: "Marvel's Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.",
   },
 ];
+
+/*Milestone 0:
+Come nel primo carosello realizzato, focalizziamoci prima sulla creazione del markup statico: 
+costruiamo il container e inseriamo l'immagine grande in modo da poter stilare lo slider.
+Milestone 1:
+Ora rimuoviamo i contenuti statici e usiamo l’array di oggetti letterali
+ per popolare dinamicamente il carosello.*/
+
+const sliderImagesElement = document.querySelector("slider > .images");
+const prevButtonElement = document.querySelector(".prev");
+const nextButtonElement = document.querySelector(".next");
+
+// faccio un cilo for per poi passarlo a map e filter
+
+for (let i = 0; i < images.length; i++) {
+  const thisImageUrl = images[i];
+  const imgMarkup = `<img src="${thisImageUrl}" alt="" class="img-fluid ${
+    i === activeImage ? "active" : ""
+  }">`;
+  console.log(imgMarkup);
+  sliderImagesElement.insertAdjacentHTML("beforeend", imgMarkup);
+}
+
+//seleziono tutte le immagini
+
+const sliderImageElement = document.querySelectorAll(".slider > .images > img");
+// console.log(imageElementList);
+
+// aggiungo even Listener per il bottone
+
+prevButtonElement.addEventListener("click", function () {
+  console.log("prev");
+
+  const thisImage = imageElementsList[activeImage];
+  console.log(thisImage);
+
+  thisImage.classList.remove("active");
+
+  if (activeImage === 0) {
+    activeImage = imageElementsList.lenght - 1;
+  } else {
+    activeImage--;
+  }
+});
