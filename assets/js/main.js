@@ -66,31 +66,18 @@ in modo da poter stilare lo slider.*/
 // selezionati gli elementi HTML corrispondenti alla classe .slider, all'elemento HTML con classe .slide-img,
 //ai bottoni di navigazione con classe .prev-btn e .next-btn e alle miniature con classe .thumbnails.
 
-// const slider = document.querySelector(".slider");
-// const slideImage = slider.querySelector(".slide-img");
-// const prevBtn = slider.querySelector(".prev-btn");
-// const nextBtn = slider.querySelector(".next-btn");
-// const thumbnails = slider.querySelector(".thumbnails");
-
-//dichiariamo una variabile activeSlideIndex dove il valore é impostato su zero
-//perché corrisponde alla prima imm dell'array
-// let activeSlideIndex = 0;
-
-//viene impostata l'immagine attiva iniziale
-// slideImage.src = images[activeSlideIndex];
-
-for (let i = 0; i < images.length; i++) {
-  const thisimages = images[i];
-  console.log(thisimages);
-  const markup = `
+const imageMarkupArray = images.map(
+  (thisimages) => `
     <div class="col">
-          <div class="card">
-              <img src="${thisimages.image}" alt="" class="card-img-top">
-              <div class="card-body">
-                  <h3>${thisimages.title}</h3>
-                  <p>${thisimages.text}</p>  
-              </div>
-          </div>
-     </div>`;
-  rowEl.innerHTML += markup;
-}
+        <div class="card">
+            <img src="${thisimages.image}" alt="" class="card-img-top">
+            <div class="card-body">
+                <h3>${thisimages.title}</h3>
+                <p>${thisimages.text}</p>  
+            </div>
+        </div>
+    </div>
+`
+);
+
+rowEl.innerHTML = imageMarkupArray.join("");
